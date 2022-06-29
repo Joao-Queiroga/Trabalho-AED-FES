@@ -1,2 +1,2 @@
-#+TITLE: Projeto TIAW
+#+TITLE: Trabalho AED/Fundamentos
 #+AUTHOR: João Queiroga
