@@ -11,5 +11,7 @@ class Locacao {
     string seguro;
     int qntDias;
     Veiculo veiculo;
+    int codigoVeiculo;
     Cliente cliente;
+    int codigoCliente;
 };
