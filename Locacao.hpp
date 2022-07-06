@@ -10,13 +10,18 @@ class Locacao {
     unsigned int codigo;
     string dataRetirada;
     string dataDevolucao;
-    string seguro;
+    bool seguro = false;
     int qntDias;
+    bool devolvido;
     Veiculo& veiculo;
     Cliente& cliente;
 
     public:
     Locacao(int codigo, string dataRetirada, string dataDevolucao, Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
+        this->codigo = codigo;
+        this->dataRetirada = dataRetirada;
+        this->dataDevolucao = dataDevolucao;
+        veiculo.setDisponivel(false);
     }
 
     int getCodigo() {
@@ -31,11 +36,11 @@ class Locacao {
         return this->dataDevolucao;
     }
 
-    void setSeguro(string seguro) {
+    void setSeguro(bool seguro) {
         this->seguro = seguro;
     }
 
-    string getSeguro() {
+    bool getSeguro() {
         return this->seguro;
     }
 
@@ -62,6 +67,7 @@ void gravaLocacao(vector<Locacao>& locacoes) {
             arquivo << locacoes[i].getCodigo() << endl;
             arquivo << locacoes[i].getDataRetirada() << endl;
             arquivo << locacoes[i].getDataDevolucao() << endl;
+            arquivo << locacoes[i].getSeguro() << endl;
             arquivo << locacoes[i].getCodigoVeiculo() << endl;
             arquivo << locacoes[i].getCodigoCliente() << endl;
         }
@@ -74,16 +80,19 @@ void getLocacoes(vector<Locacao>& locacoes, vector<Veiculo>& veiculos, vector<Cl
         while (!arquivo.eof()) {
             int codigo;
             string dataRetirada, dataDevolucao;
-            string seguro;
+            bool seguro;
             int codigoVeiculo, codigoCliente;
             arquivo >> codigo;
             arquivo >> dataRetirada;
             arquivo >> dataDevolucao;
+            arquivo >> seguro;
             arquivo >> codigoVeiculo;
             arquivo >> codigoCliente;
             Veiculo *veiculo = getVeiculoByCodigo(veiculos, codigoVeiculo);
             Cliente *cliente = getClienteByCodigo(clientes, codigoCliente);
             Locacao locacao = *new Locacao(codigo, dataRetirada, dataDevolucao, *cliente, *veiculo);
+            locacao.setSeguro(seguro);
+            locacoes.push_back(locacao);
         }
         arquivo.close();
     }
