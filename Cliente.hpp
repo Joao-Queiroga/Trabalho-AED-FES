@@ -1,4 +1,7 @@
 #include <string>
+#include <fstream>
+#include <vector>
+#include <iostream>
 using namespace std;
 
 class Cliente {
@@ -9,8 +12,11 @@ class Cliente {
     string telefone;
 
     public:
-    void setCodigo(int codigo) {
+    Cliente(int codigo, string nome, string endereco, string telefone) {
         this->codigo = codigo;
+        this->nome = nome;
+        this->endereco = endereco;
+        this->telefone = telefone;
     }
 
     int getCodigo() {
@@ -41,3 +47,47 @@ class Cliente {
         return this->telefone;
     }
 };
+
+
+inline void cadastraCliente(vector<Cliente>& clientes) {
+    string nome,endereco,telefone; 
+    getline(cin,nome);
+    getline(cin,endereco);
+    getline(cin,telefone);
+    Cliente cliente = *new Cliente (clientes.size(),nome,endereco,telefone);         
+}
+
+inline void gravaClientes(vector<Cliente>& clientes) {
+    ofstream arquivo("Cliente.txt", ios::out|ios::trunc);
+        if (arquivo.is_open()) {
+            for (int i = 0; i < clientes.size(); i++ ) {
+                arquivo << clientes[i].getCodigo() << endl; 
+                arquivo << clientes[i].getNome() << endl; 
+                arquivo << clientes[i].getEndereco() << endl; 
+                arquivo << clientes[i].getTelefone() << endl;               
+            }
+            arquivo.close();
+        }
+}
+
+inline void getCliente(vector<Cliente>& clientes) {
+    ifstream arquivo("clientes.txt", ios::in);
+    if (arquivo.is_open()){
+        while (!arquivo.eof()){
+            int codigo;
+            string nome,endereco,telefone;
+            arquivo >> codigo;
+            getline(arquivo,nome);
+            getline(arquivo,endereco);
+            getline(arquivo,telefone);
+            arquivo >> nome;
+            arquivo >> endereco;
+            arquivo >> telefone;
+            Cliente cliente = *new Cliente(codigo,nome,endereco,telefone);
+            clientes.push_back(cliente);
+        }   
+           arquivo.close();
+    }
+}
+
+   
