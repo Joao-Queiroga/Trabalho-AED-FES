@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/locadora.dir/main.cpp.o CMakeFiles/locadora.dir/Veiculo.cpp.o -o locadora 

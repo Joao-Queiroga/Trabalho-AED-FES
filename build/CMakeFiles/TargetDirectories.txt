@@ -1,3 +1,0 @@
-/home/joaoqueiroga/Documentos/Trabalho-AED-FES/build/CMakeFiles/locadora.dir
-/home/joaoqueiroga/Documentos/Trabalho-AED-FES/build/CMakeFiles/edit_cache.dir
-/home/joaoqueiroga/Documentos/Trabalho-AED-FES/build/CMakeFiles/rebuild_cache.dir

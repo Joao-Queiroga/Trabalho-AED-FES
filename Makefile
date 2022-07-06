@@ -60,7 +60,7 @@ EQUALS = =
 CMAKE_SOURCE_DIR = /home/joaoqueiroga/Documentos/Trabalho-AED-FES
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/joaoqueiroga/Documentos/Trabalho-AED-FES/build
+CMAKE_BINARY_DIR = /home/joaoqueiroga/Documentos/Trabalho-AED-FES
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaoqueiroga/Documentos/Trabalho-AED-FES/build/CMakeFiles /home/joaoqueiroga/Documentos/Trabalho-AED-FES/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaoqueiroga/Documentos/Trabalho-AED-FES/CMakeFiles /home/joaoqueiroga/Documentos/Trabalho-AED-FES//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaoqueiroga/Documentos/Trabalho-AED-FES/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/joaoqueiroga/Documentos/Trabalho-AED-FES/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -129,30 +129,6 @@ locadora/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/locadora.dir/build.make CMakeFiles/locadora.dir/build
 .PHONY : locadora/fast
 
-Veiculo.o: Veiculo.cpp.o
-.PHONY : Veiculo.o
-
-# target to build an object file
-Veiculo.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/locadora.dir/build.make CMakeFiles/locadora.dir/Veiculo.cpp.o
-.PHONY : Veiculo.cpp.o
-
-Veiculo.i: Veiculo.cpp.i
-.PHONY : Veiculo.i
-
-# target to preprocess a source file
-Veiculo.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/locadora.dir/build.make CMakeFiles/locadora.dir/Veiculo.cpp.i
-.PHONY : Veiculo.cpp.i
-
-Veiculo.s: Veiculo.cpp.s
-.PHONY : Veiculo.s
-
-# target to generate assembly for a file
-Veiculo.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/locadora.dir/build.make CMakeFiles/locadora.dir/Veiculo.cpp.s
-.PHONY : Veiculo.cpp.s
-
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -186,9 +162,6 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... locadora"
-	@echo "... Veiculo.o"
-	@echo "... Veiculo.i"
-	@echo "... Veiculo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
