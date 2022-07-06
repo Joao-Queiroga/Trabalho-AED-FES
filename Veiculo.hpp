@@ -129,6 +129,16 @@ inline void gravaVeiculos(vector<Veiculo>& veiculos) {
     }
 }
 
+inline Veiculo& getVeiculoByCodigo(vector<Veiculo>& veiculos, int codigo) {
+    int i;
+    for (i = 0; i < veiculos.size(); i++) {
+        if (veiculos[i].getCodigo() == codigo) {
+            break;
+        }
+    }
+    return veiculos[i];
+}
+
 inline void getVeiculos(vector<Veiculo>& veiculos) {
     ifstream arquivo("Veiculos.txt", ios::in);
     if (arquivo.is_open()) {
