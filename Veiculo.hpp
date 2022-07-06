@@ -98,7 +98,7 @@ class Veiculo {
     }
 };
 
-inline void cadastraVeiculo(vector<Veiculo>& veiculos) {
+void cadastraVeiculo(vector<Veiculo>& veiculos) {
     string descricao, modelo, cor, placa;
     float diaria;
     int ocupantes;
@@ -112,7 +112,7 @@ inline void cadastraVeiculo(vector<Veiculo>& veiculos) {
     veiculos.push_back(veiculo);
 }
 
-inline void gravaVeiculos(vector<Veiculo>& veiculos) {
+void gravaVeiculos(vector<Veiculo>& veiculos) {
     ofstream arquivo("Veiculos.txt", ios::out|ios::trunc);
     if (arquivo.is_open()) {
         for (int i = 0; i < veiculos.size(); i++) {
@@ -129,17 +129,17 @@ inline void gravaVeiculos(vector<Veiculo>& veiculos) {
     }
 }
 
-inline Veiculo& getVeiculoByCodigo(vector<Veiculo>& veiculos, int codigo) {
+Veiculo* getVeiculoByCodigo(vector<Veiculo>& veiculos, int codigo) {
     int i;
     for (i = 0; i < veiculos.size(); i++) {
         if (veiculos[i].getCodigo() == codigo) {
-            break;
+            return &veiculos[i];
         }
     }
-    return veiculos[i];
+    return NULL;
 }
 
-inline void getVeiculos(vector<Veiculo>& veiculos) {
+void getVeiculos(vector<Veiculo>& veiculos) {
     ifstream arquivo("Veiculos.txt", ios::in);
     if (arquivo.is_open()) {
         while (!arquivo.eof()) {

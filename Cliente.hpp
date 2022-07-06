@@ -49,7 +49,7 @@ class Cliente {
 };
 
 
-inline void cadastraCliente(vector<Cliente>& clientes) {
+void cadastraCliente(vector<Cliente>& clientes) {
     string nome,endereco,telefone; 
     getline(cin,nome);
     getline(cin,endereco);
@@ -57,7 +57,7 @@ inline void cadastraCliente(vector<Cliente>& clientes) {
     Cliente cliente = *new Cliente (clientes.size(),nome,endereco,telefone);         
 }
 
-inline void gravaClientes(vector<Cliente>& clientes) {
+void gravaClientes(vector<Cliente>& clientes) {
     ofstream arquivo("Cliente.txt", ios::out|ios::trunc);
         if (arquivo.is_open()) {
             for (int i = 0; i < clientes.size(); i++ ) {
@@ -70,7 +70,7 @@ inline void gravaClientes(vector<Cliente>& clientes) {
         }
 }
 
-inline void getCliente(vector<Cliente>& clientes) {
+void getCliente(vector<Cliente>& clientes) {
     ifstream arquivo("clientes.txt", ios::in);
     if (arquivo.is_open()){
         while (!arquivo.eof()){
@@ -90,4 +90,11 @@ inline void getCliente(vector<Cliente>& clientes) {
     }
 }
 
-   
+Cliente* getClienteByCodigo(vector<Cliente>& clientes, int codigo) {
+    for (int i = 0; i < clientes.size(); i++) {
+        if (clientes[i].getCodigo() == codigo) {
+            return &clientes[i];
+        }
+    }
+    return NULL;
+}

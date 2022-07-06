@@ -16,7 +16,7 @@ class Locacao {
     Cliente& cliente;
 
     public:
-    Locacao(int codigo, string dataDevolucao, Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
+    Locacao(int codigo, string dataRetirada, string dataDevolucao, Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
     }
 
     int getCodigo() {
@@ -52,10 +52,10 @@ class Locacao {
     }
 };
 
-inline void aluga(vector<Locacao>& locacoes) {
+void aluga(vector<Locacao>& locacoes) {
 }
 
-inline void gravaLocacao(vector<Locacao>& locacoes) {
+void gravaLocacao(vector<Locacao>& locacoes) {
     ofstream arquivo("Locacoes.txt", ios::out|ios::trunc);
     if (arquivo.is_open()) {
         for (int i = 0; i < locacoes.size(); i++) {
@@ -68,11 +68,22 @@ inline void gravaLocacao(vector<Locacao>& locacoes) {
     }
 }
 
-inline void getLocacoes(vector<Locacao>& locacoes) {
+void getLocacoes(vector<Locacao>& locacoes, vector<Veiculo>& veiculos, vector<Cliente>& clientes) {
     ifstream arquivo("Locacoes.txt", ios::in);
     if (arquivo.is_open()) {
         while (!arquivo.eof()) {
             int codigo;
+            string dataRetirada, dataDevolucao;
+            string seguro;
+            int codigoVeiculo, codigoCliente;
+            arquivo >> codigo;
+            arquivo >> dataRetirada;
+            arquivo >> dataDevolucao;
+            arquivo >> codigoVeiculo;
+            arquivo >> codigoCliente;
+            Veiculo *veiculo = getVeiculoByCodigo(veiculos, codigoVeiculo);
+            Cliente *cliente = getClienteByCodigo(clientes, codigoCliente);
+            Locacao locacao = *new Locacao(codigo, dataRetirada, dataDevolucao, *cliente, *veiculo);
         }
         arquivo.close();
     }
