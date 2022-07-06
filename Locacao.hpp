@@ -16,6 +16,7 @@ class Locacao {
     public:
     Locacao(Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
     }
+
     string getDataRetirada() {
         return this->dataRetirada;
     }
@@ -34,9 +35,5 @@ class Locacao {
 
     int getQntDias() {
         return this->qntDias;
-    }
-
-    void setVeiculo(Veiculo& veiculo) {
-        this->veiculo = veiculo;
     }
 };

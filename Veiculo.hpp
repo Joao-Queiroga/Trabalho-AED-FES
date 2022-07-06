@@ -10,7 +10,7 @@ class Veiculo {
     string placa;
     float diaria;
     int ocupantes;
-    char status;
+    char status; // D = disponivel A = alugado
 
     public:
     int getCodigo() {
