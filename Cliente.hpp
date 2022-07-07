@@ -55,6 +55,7 @@ void cadastraCliente(vector<Cliente>& clientes) {
     getline(cin,endereco);
     getline(cin,telefone);
     Cliente cliente = *new Cliente (clientes.size(),nome,endereco,telefone);         
+    clientes.push_back(cliente);
 }
 
 void gravaClientes(vector<Cliente>& clientes) {
