@@ -139,6 +139,7 @@ Veiculo* getVeiculoByCodigo(vector<Veiculo>& veiculos, int codigo) {
     return NULL;
 }
 
+//Recupera os veiculos dos arquivos e os coloca no vetor
 void getVeiculos(vector<Veiculo>& veiculos) {
     ifstream arquivo("Veiculos.txt", ios::in);
     if (arquivo.is_open()) {

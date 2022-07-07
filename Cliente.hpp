@@ -71,7 +71,7 @@ void gravaClientes(vector<Cliente>& clientes) {
         }
 }
 
-void getCliente(vector<Cliente>& clientes) {
+void getClientes(vector<Cliente>& clientes) {
     ifstream arquivo("clientes.txt", ios::in);
     if (arquivo.is_open()){
         while (!arquivo.eof()){
@@ -81,13 +81,10 @@ void getCliente(vector<Cliente>& clientes) {
             getline(arquivo,nome);
             getline(arquivo,endereco);
             getline(arquivo,telefone);
-            arquivo >> nome;
-            arquivo >> endereco;
-            arquivo >> telefone;
             Cliente cliente = *new Cliente(codigo,nome,endereco,telefone);
             clientes.push_back(cliente);
         }   
-           arquivo.close();
+        arquivo.close();
     }
 }
 

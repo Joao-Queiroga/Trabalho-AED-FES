@@ -1,4 +1,3 @@
-#include <bits/types/time_t.h>
 #include <fstream>
 #include <iostream>
 #include <string>
@@ -11,9 +10,8 @@ using namespace std;
 class Locacao {
     private:
     unsigned int codigo;
-    string dataRetirada;
-    //time_t dataRetirada;
-    string dataDevolucao;
+    struct tm dataRetirada = {0};
+    struct tm dataDevolucao = {0};
     bool seguro = false;
     int qntDias;
     bool devolvido;
@@ -21,11 +19,21 @@ class Locacao {
     Cliente& cliente;
 
     public:
+    Locacao(int codigo, string dataDevolucao, Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
+        this->codigo = codigo;
+        if (*strptime(dataDevolucao, "%d/%m/%Y", this->dataDevolucao) == NULL) {
+            cout << "informe a data novamente de devolucao novamente" << endl;
+            cin >> dataDevolucao;
+        }
+        veiculo.setDisponivel(false);
+        time_t now = time(NULL);
+        this->dataRetirada = *localtime(&now);
+    }
+
     Locacao(int codigo, string dataRetirada, string dataDevolucao, Cliente& cliente, Veiculo& veiculo):cliente { cliente }, veiculo{ veiculo } {
         this->codigo = codigo;
-        this->dataRetirada = dataRetirada;
-        this->dataDevolucao = dataDevolucao;
-        veiculo.setDisponivel(false);
+        *strptime(dataRetirada, "%d/%m/%Y", this->dataRetirada);
+        *strptime(dataDevolucao, "%d/%m/%Y", this->dataDevolucao);
     }
 
     int getCodigo() {
@@ -33,12 +41,14 @@ class Locacao {
     }
 
     string getDataRetirada() {
-        return this->dataRetirada;
+        string data;
+        strftime(data, 10, "%d/%m/%Y", this->dataRetirada);
+        return "";
     }
 
-    string getDataDevolucao() {
+/*    string getDataDevolucao() {
         return this->dataDevolucao;
-    }
+    }*/
 
     void setSeguro(bool seguro) {
         this->seguro = seguro;
@@ -84,6 +94,7 @@ void gravaLocacao(vector<Locacao>& locacoes) {
             arquivo << locacoes[i].getCodigoVeiculo() << endl;
             arquivo << locacoes[i].getCodigoCliente() << endl;
         }
+        arquivo.close();
     }
 }
 
