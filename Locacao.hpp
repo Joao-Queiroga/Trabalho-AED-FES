@@ -1,6 +1,9 @@
+#include <bits/types/time_t.h>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
+#include <ctime>
 #include "Veiculo.hpp"
 #include "Cliente.hpp"
 using namespace std;
@@ -9,6 +12,7 @@ class Locacao {
     private:
     unsigned int codigo;
     string dataRetirada;
+    //time_t dataRetirada;
     string dataDevolucao;
     bool seguro = false;
     int qntDias;
@@ -57,7 +61,16 @@ class Locacao {
     }
 };
 
-void aluga(vector<Locacao>& locacoes) {
+void aluga(vector<Locacao>& locacoes, vector<Veiculo>& veiculos, vector<Cliente>& clientes) {
+    int codigoCliente, ocupantes;
+    string dataRetirada, dataDevolucao;
+    cout << "Digite o codigo do cliente que irá alugar um veiculo: ";
+    cin >> codigoCliente;
+    cout << "Digite a data de devolucao do veiculo :";
+    cin >> dataDevolucao;
+    cout << "Digite o numero de ocupantes desejados no veículo: ";
+    cin >> ocupantes;
+    dataRetirada = "Hoje";
 }
 
 void gravaLocacao(vector<Locacao>& locacoes) {
