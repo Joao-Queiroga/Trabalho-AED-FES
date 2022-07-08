@@ -1,2 +1,8 @@
 #+TITLE: Trabalho AED/Fundamentos
 #+AUTHOR: João Queiroga
+
+** Membros do Grupo
+- João Francisco,
+- Leonardo Oliveira
+- Lucas Nogueira
+- Vitor Friche
